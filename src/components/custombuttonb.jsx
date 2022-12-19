@@ -1,5 +1,9 @@
 import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-import { useFonts } from "expo-font";
+import {
+  useFonts,
+  Lato_400Regular,
+  Lato_700Bold,
+} from "@expo-google-fonts/lato";
 import { colors } from "../utils/theme";
 function BButtonb({
   title = "title",
@@ -7,8 +11,9 @@ function BButtonb({
   onButtonPress,
   textcolor = colors.textprimary,
 }) {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../assets/fonts/Lato-Light.ttf"),
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
   });
   if (!fontsLoaded) {
     return null;
@@ -18,7 +23,7 @@ function BButtonb({
       <Text
         style={{
           color: colors.textsecondary,
-          fontFamily: "lato",
+          fontFamily: "Lato_400Regular",
           fontSize: 16,
         }}
       >

@@ -5,11 +5,11 @@ import {
   BButtondesign,
   BButtondesignb,
 } from "../components/custombuttona";
+import { RightIcon } from "../components/icon";
 import { BButtonb } from "../components/custombuttonb";
 import { Header, HeaderRegular } from "../components/header";
 import { colors } from "../utils/theme";
 import React, { useState, useEffect } from "react";
-import { Ionicons } from "@expo/vector-icons";
 import {
   SafeAreaView,
   StyleSheet,
@@ -23,6 +23,9 @@ import {
 import AppIntroSlider from "react-native-app-intro-slider";
 
 function WelcomeScreen({ navigation }) {
+  const gotoIntro = () => {
+    navigation.navigate("Intro");
+  };
   const gotoLogin = () => {
     navigation.navigate("LogIn");
   };
@@ -35,24 +38,23 @@ function WelcomeScreen({ navigation }) {
       <View
         style={{
           flex: 0.1,
-          marginLeft: 20,
-          marginTop: 2,
         }}
       >
-        <Ionicons
-          name="md-chevron-back-outline"
-          size={32}
-          color="white"
-          onPress={() => {
-            navigation.navigate("Intro");
-          }}
-        />
+        <RightIcon onButtonPress={gotoIntro} />
       </View>
-      <View style={{ flex: 0.6 }}>
-        <Text style={styles.titleStyle}>Welcome to Uptodo </Text>
-        <Text style={styles.paragraphStyle}>
-          Please login to your account or create new account to continue
-        </Text>
+      <View
+        style={{
+          flex: 0.6,
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
+      >
+        <Header title={"Welcome to UpTodo "} marginCustom={25} />
+        <HeaderRegular
+          title={
+            "  Please login to your account or create new \n\t\t\t\t\t\t\t\t\t\t\t account to continue"
+          }
+        />
       </View>
       <View style={{ flex: 0.2 }}>
         <BButton
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bgColor,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     justifyContent: "center",
   },
   titleStyle: {

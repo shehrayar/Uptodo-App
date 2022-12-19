@@ -1,12 +1,122 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { colors, modifiers } from "../utils/theme";
+import {
+  StyleSheet,
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
+import { Input } from "../components/input";
+import { Header } from "../components/header";
+import { RightIcon } from "../components/icon";
+import {
+  BButton,
+  BButtondesign,
+  BButtondesignb,
+} from "../components/custombuttona";
 
 function LogIn({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPass, setShowPass] = useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Loginnnn!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <KeyboardAvoidingView style={styles.container} behavior="height">
+      <ScrollView>
+        <SafeAreaView>
+          <View style={{ marginHorizontal: modifiers.itemMargin }}>
+            <View
+              style={{
+                flex: 0.2,
+                justifyContent: "flex-end",
+              }}
+            >
+              <RightIcon />
+              <Header title={"Login"} marginCustom={25} />
+            </View>
+            <View style={{ flex: 0.4, justifyContent: "center" }}>
+              <Text style={styles.text}>Username</Text>
+              <Input
+                placeholder={"Enter your Email"}
+                isSecure={false}
+                onChange={setEmail}
+                iconName={"mail-outline"}
+                showIcon={true}
+              />
+              <Text style={styles.text}>Password</Text>
+              <Input
+                placeholder={"Enter your Password"}
+                isSecure={false}
+                onChange={setPassword}
+                iconName={"eye-outline"}
+                showIcon={true}
+              />
+            </View>
+            <View style={{ flex: 0.4 }}>
+              <BButton
+                title="Login"
+                colorcustom={colors.primary}
+                // onButtonPress={gotoLogin}
+              />
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginVertical: 10,
+                }}
+              >
+                <View
+                  style={{
+                    marginLeft: 15,
+                    flex: 1,
+                    height: 1,
+                    backgroundColor: colors.textsecondary,
+                  }}
+                />
+                <View>
+                  <Text
+                    style={{ textAlign: "center", color: colors.textsecondary }}
+                  >
+                    Or
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    marginRight: 15,
+                    flex: 1,
+                    height: 1,
+                    backgroundColor: colors.textsecondary,
+                  }}
+                />
+              </View>
+              <BButton
+                title="Login with Google"
+                colorcustom={colors.transparent}
+                showImagebutton={true}
+                imagePath={require("../../assets/icongoogle.png")}
+                // onButtonPress={gotoSignup}
+              />
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignSelf: "center",
+                  marginTop: 30,
+                }}
+              >
+                <Text style={styles.textTwo}>Don't have an account? </Text>
+                <TouchableOpacity>
+                  <Text style={{ color: colors.textprimary }}>Register</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </SafeAreaView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 export default LogIn;
@@ -14,8 +124,21 @@ export default LogIn;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: colors.bgColor,
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    marginTop: 10,
+    marginLeft: 12,
+    color: colors.textprimary,
+  },
+  textOne: {
+    margin: 10,
+    color: colors.textprimary,
+  },
+  textTwo: {
+    color: colors.textsecondary,
+    alignSelf: "center",
   },
 });

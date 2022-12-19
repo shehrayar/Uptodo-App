@@ -57,7 +57,7 @@ const Intro = ({ navigation }) => {
     },
     {
       key: 3,
-      title: "Orgonaize your tasks",
+      title: "Organaize your tasks",
       text: "         You can organize your daily tasks by \n adding your tasks into separate categories",
       image: require("D:/android studio/android projects/to-do/assets/introimages/3.jpg"),
       backgroundColor: colors.bgColor,
@@ -76,7 +76,7 @@ const Intro = ({ navigation }) => {
         }}
       >
         <Image style={styles.introImageStyle} source={item.image} />
-        <Header title={item.title} />
+        <Header title={item.title} marginCustom={25} />
         <HeaderRegular title={item.text} />
       </View>
     );

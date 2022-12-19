@@ -1,36 +1,63 @@
-import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
-import { useFonts } from "expo-font";
+import { TouchableOpacity, Text, StyleSheet, View, Image } from "react-native";
+import {
+  useFonts,
+  Lato_400Regular,
+  Lato_700Bold,
+} from "@expo-google-fonts/lato";
 import { colors } from "../utils/theme";
-
+import { Ionicons } from "@expo/vector-icons";
 const BButton = ({
   title = "title",
   colorcustom = "blue",
   bgColor = colors.primary,
   onButtonPress,
+  imagePath,
+  showImagebutton = false,
+  onIconPress,
+  iconName,
   textcolor = colors.textprimary,
 }) => {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../assets/fonts/Lato-Light.ttf"),
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
   });
   if (!fontsLoaded) {
     return null;
   }
   return (
     <View>
-      <TouchableOpacity
-        style={[styles.btnCont, { backgroundColor: colorcustom }]}
-        onPress={onButtonPress}
-      >
-        <Text
-          style={{
-            color: colors.textprimary,
-            fontFamily: "lato",
-            fontSize: 16,
-          }}
+      {showImagebutton == true ? (
+        <TouchableOpacity
+          style={[styles.btnCont, { backgroundColor: colorcustom }]}
+          onPress={onButtonPress}
         >
-          {title}
-        </Text>
-      </TouchableOpacity>
+          <Image style={styles.image} source={imagePath} />
+          <Text
+            style={{
+              color: colors.textprimary,
+              fontFamily: "Lato_400Regular",
+              fontSize: 16,
+            }}
+          >
+            {title}
+          </Text>
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={[styles.btnCont, { backgroundColor: colorcustom }]}
+          onPress={onButtonPress}
+        >
+          <Text
+            style={{
+              color: colors.textprimary,
+              fontFamily: "Lato_400Regular",
+              fontSize: 16,
+            }}
+          >
+            {title}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -41,8 +68,9 @@ const BButtondesign = ({
   bgColor = colors.primary,
   textcolor = colors.textprimary,
 }) => {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../assets/fonts/Lato-Light.ttf"),
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
   });
   if (!fontsLoaded) {
     return null;
@@ -52,7 +80,7 @@ const BButtondesign = ({
       <Text
         style={{
           color: colors.textprimary,
-          fontFamily: "lato",
+          fontFamily: "Lato_400Regular",
           fontSize: 16,
         }}
       >
@@ -69,8 +97,9 @@ const BButtondesignb = ({
   textcolor = colors.textprimary,
   onButtonPress,
 }) => {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../assets/fonts/Lato-Light.ttf"),
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
   });
   if (!fontsLoaded) {
     return null;
@@ -81,7 +110,7 @@ const BButtondesignb = ({
         <Text
           style={{
             color: colors.textprimary,
-            fontFamily: "lato",
+            fontFamily: "Lato_400Regular",
             fontSize: 16,
           }}
         >
@@ -93,6 +122,12 @@ const BButtondesignb = ({
 };
 export { BButtondesignb };
 const styles = StyleSheet.create({
+  image: {
+    height: 25,
+    width: 25,
+    margin: 8,
+    alignSelf: "center",
+  },
   btnCont: {
     height: 48,
     width: 350,
@@ -102,6 +137,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.primary,
     margin: 15,
+    flexDirection: "row",
   },
   btnConta: {
     height: 48,

@@ -1,9 +1,15 @@
 import { colors } from "../utils/theme";
 import { Text } from "react-native";
-import { useFonts } from "expo-font";
-function Header({ title }) {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../assets/fonts/Lato-Light.ttf"),
+import { useState } from "react";
+import {
+  useFonts,
+  Lato_400Regular,
+  Lato_700Bold,
+} from "@expo-google-fonts/lato";
+function Header({ title, marginCustom }) {
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
   });
   if (!fontsLoaded) {
     return null;
@@ -12,9 +18,11 @@ function Header({ title }) {
     <Text
       style={{
         color: colors.textprimary,
-        fontFamily: "lato",
-        fontSize: 32,
-        fontWeight: "bold",
+        fontFamily: "Lato_700Bold",
+        fontSize: 36,
+        // fontWeight: "bold",
+        marginLeft: 10,
+        marginTop: marginCustom,
       }}
     >
       {title}
@@ -23,8 +31,9 @@ function Header({ title }) {
 }
 export { Header };
 function HeaderRegular({ title }) {
-  const [fontsLoaded] = useFonts({
-    lato: require("../../assets/fonts/Lato-Light.ttf"),
+  let [fontsLoaded] = useFonts({
+    Lato_400Regular,
+    Lato_700Bold,
   });
   if (!fontsLoaded) {
     return null;
@@ -33,8 +42,10 @@ function HeaderRegular({ title }) {
     <Text
       style={{
         color: colors.textsecondary,
-        fontFamily: "lato",
+        fontFamily: "Lato_400Regular",
         fontSize: 16,
+        marginLeft: 10,
+        marginTop: 15,
       }}
     >
       {title}
