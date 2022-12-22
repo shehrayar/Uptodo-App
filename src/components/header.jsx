@@ -30,7 +30,7 @@ function Header({ title, marginCustom }) {
   );
 }
 export { Header };
-function HeaderRegular({ title }) {
+function HeaderRegular({ title, fontsize = 16 }) {
   let [fontsLoaded] = useFonts({
     Lato_400Regular,
     Lato_700Bold,
@@ -43,7 +43,7 @@ function HeaderRegular({ title }) {
       style={{
         color: colors.textsecondary,
         fontFamily: "Lato_400Regular",
-        fontSize: 16,
+        fontSize: fontsize,
         marginLeft: 10,
         marginTop: 15,
       }}

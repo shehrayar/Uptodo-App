@@ -35,7 +35,11 @@ function LogIn({ navigation }) {
                 justifyContent: "flex-end",
               }}
             >
-              <RightIcon />
+              <RightIcon
+                onButtonPress={() => {
+                  navigation.navigate("WelcomeScreen");
+                }}
+              />
               <Header title={"Login"} marginCustom={25} />
             </View>
             <View style={{ flex: 0.4, justifyContent: "center" }}>
@@ -60,7 +64,9 @@ function LogIn({ navigation }) {
               <BButton
                 title="Login"
                 colorcustom={colors.primary}
-                // onButtonPress={gotoLogin}
+                onButtonPress={() => {
+                  navigation.navigate("Homes");
+                }}
               />
               <View
                 style={{
@@ -108,7 +114,11 @@ function LogIn({ navigation }) {
                 }}
               >
                 <Text style={styles.textTwo}>Don't have an account? </Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("SignUp");
+                  }}
+                >
                   <Text style={{ color: colors.textprimary }}>Register</Text>
                 </TouchableOpacity>
               </View>

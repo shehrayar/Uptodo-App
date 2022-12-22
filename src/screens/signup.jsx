@@ -20,7 +20,7 @@ import {
   BButtondesignb,
 } from "../components/custombuttona";
 
-function LogIn({ navigation }) {
+function SignUp({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [Confirmpassword, setConfirmPassword] = useState("");
@@ -36,7 +36,11 @@ function LogIn({ navigation }) {
                 justifyContent: "flex-end",
               }}
             >
-              <RightIcon />
+              <RightIcon
+                onButtonPress={() => {
+                  navigation.navigate("WelcomeScreen");
+                }}
+              />
               <Header title={"Register"} marginCustom={15} />
             </View>
 
@@ -71,7 +75,9 @@ function LogIn({ navigation }) {
               <BButton
                 title="Register"
                 colorcustom={colors.primary}
-                // onButtonPress={gotoLogin}
+                onButtonPress={() => {
+                  navigation.navigate("LogIn");
+                }}
               />
               <View
                 style={{
@@ -119,7 +125,11 @@ function LogIn({ navigation }) {
                 }}
               >
                 <Text style={styles.textTwo}>Already have an account? </Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => {
+                    navigation.navigate("LogIn");
+                  }}
+                >
                   <Text style={{ color: colors.textprimary }}>Login</Text>
                 </TouchableOpacity>
               </View>
@@ -130,7 +140,7 @@ function LogIn({ navigation }) {
     </KeyboardAvoidingView>
   );
 }
-export default LogIn;
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {

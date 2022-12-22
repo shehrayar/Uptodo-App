@@ -9,6 +9,7 @@ const colors = {
   transparent: "rgba(18,18,18,0.2)",
   inputBgColor: "rgba(29,29,29,1)",
   placeholderTextColors: "rgba(80,80,80,1)",
+  tabcolor: "rgba(38,38,38,1)",
 };
 
 const modifiers = {
